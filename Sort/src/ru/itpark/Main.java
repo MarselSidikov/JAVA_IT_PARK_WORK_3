@@ -3,6 +3,15 @@ package ru.itpark;
 import java.util.Arrays;
 
 public class Main {
+
+    public static int sum(int array[]) {
+        int result = 0;
+        for (int i = 0; i < array.length; i++) {
+            result = result + array[i];
+        }
+        return result;
+    }
+
     public static void sortByInsertion(int array[]) {
         int minIndex;
         int min;
@@ -41,6 +50,7 @@ public class Main {
         // x - аргумент
         sortByInsertion(x);
         System.out.println("Array after sort: " + Arrays.toString(x));
-
-	}
+        int sumOfArrayElements = sum(x);
+        System.out.println(sumOfArrayElements);
+    }
 }
