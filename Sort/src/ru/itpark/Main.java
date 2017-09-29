@@ -12,7 +12,7 @@ public class Main {
         return result;
     }
 
-    public static void sortByInsertion(int array[]) {
+    public static void sortBySelection(int array[]) {
         int minIndex;
         int min;
         // проходим по всему массиву
@@ -48,7 +48,7 @@ public class Main {
         int x[] = {2, 1, -4, 6, 1, 2, 5};
         System.out.println("Array before sort: " + Arrays.toString(x));
         // x - аргумент
-        sortByInsertion(x);
+        sortBySelection(x);
         System.out.println("Array after sort: " + Arrays.toString(x));
         int sumOfArrayElements = sum(x);
         System.out.println(sumOfArrayElements);
