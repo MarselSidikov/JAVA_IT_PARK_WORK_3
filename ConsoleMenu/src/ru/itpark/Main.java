@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        String document[] = new String[3];
+        Document document = new Document();
         // Обеспечить функционал:
         // добавить строку в конец, в начало, в заданную
         // позицию, заменить строку, удалить строку, вывести весь документ
@@ -18,27 +18,27 @@ public class Main {
 
             switch (command) {
                 case 1: {
-                    DocumentUtil.showDocument(document);
+                    document.showDocument();
                 }
                 break;
                 case 2: {
-                    if (DocumentUtil.count == document.length) {
+                    if (document.count == document.lines.length) {
                         System.err.println("Нет места");
                         break;
                     }
                     System.out.println("Введите строку: ");
                     String newLine = scanner.next();
-                    DocumentUtil.addLineToBegin(document, newLine);
+                    document.addLineToBegin(newLine);
                 }
                 break;
                 case 3: {
-                    if (DocumentUtil.count == document.length) {
+                    if (document.count == document.lines.length) {
                         System.err.println("Нет места");
                         break;
                     }
                     System.out.println("Введите строку: ");
                     String newLine = scanner.next();
-                    DocumentUtil.addLineToEnd(document, newLine);
+                    document.addLineToEnd(newLine);
                 }
                 break;
                 case 7:
