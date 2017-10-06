@@ -4,7 +4,9 @@ import com.sun.deploy.resources.Deployment_pt_BR;
 
 public class MainWithObjects {
     public static void main(String[] args) {
-        Document document = new Document();
+        // создали объект класса
+        Document document; // document = null
+        document = new Document(); // ссылка на реальный объект
         Document document1 = new Document();
         document.addLineToBegin("Hello");
         document.addLineToBegin("Bye");
