@@ -17,6 +17,6 @@ public class Main {
         System.out.println(sportCar.getFuelAmount());
         System.out.println(sportCar.getN2oAmount());
 
-        
+        Car veyronAsCar = sportCar;
     }
 }
