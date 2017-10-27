@@ -25,7 +25,7 @@ public class Human {
     if (this == object) {
       return true;
     }
-    
+
     Human that = (Human)object;
     return this.age == that.age &&
         this.height == that.height;
