@@ -1,0 +1,11 @@
+INSERT INTO owner(age, height, name) VALUES (23, 185, 'Марсель');
+INSERT INTO owner(age, height, name) VALUES (29, 180, 'Дмитрий');
+INSERT INTO owner(age, height, name) VALUES (23, 183, 'Илья');
+INSERT INTO owner(age, height, name) VALUES (18, 168, 'Екатерина');
+INSERT INTO owner(age, height, name) VALUES (30, 183, 'Артем');
+INSERT INTO owner(age, height, name) VALUES (23, 186, 'Иван');
+INSERT INTO owner(age, height, name) VALUES (29, 194, 'Антон');
+INSERT INTO owner(age, height, name) VALUES (29, 180, 'Станислав');
+INSERT INTO owner(age, height, name) VALUES (19, 174, 'Камиль');
+INSERT INTO owner(age, height, name) VALUES (20, 189, 'Артем');
+INSERT INTO owner(age, height, name) VALUES (28, 186, 'Закир');
