@@ -35,7 +35,7 @@ public class Main {
 
       PreparedStatement preparedStatement = connection
           .prepareStatement("INSERT INTO owner(name, age) VALUES (?, ?)");
-      preparedStatement.setString(1, name);
+      preparedStatement.setString(1, ownerName);
       preparedStatement.setInt(2, age);
       preparedStatement.execute();
 
