@@ -3,14 +3,21 @@ package ru.itpark;
 public class Main {
 
     public static void main(String[] args) {
-      ArrayOfValuesMap arrayOfValuesMap = new ArrayOfValuesMap();
+      HashMap<String, Integer> map = new HashMap<>();
+      map.put("Марсель", 1);
+      map.put("Антон", 2);
+      map.put("Дмитрий", 3);
+      map.put("Лейсан", 5);
+      map.put("Закир", 4);
+      map.put("Артем", 6);
+      map.put("Камиль", 7);
+      map.put("Нияз", 8);
+      map.put("Илья", 9);
+      map.put("Лейсан", 11);
 
-      int hash = arrayOfValuesMap.hash("Марсель");
-      int hash1 = arrayOfValuesMap.hash("Марсеьл");
-      int hash2 = arrayOfValuesMap.hash("Дмитрий");
-
-      System.out.println(hash);
-      System.out.println(hash1);
-      System.out.println(hash2);
+      System.out.println(map.get("Лейсан"));
+      System.out.println(map.get("Закир"));
+      System.out.println(map.get("Марсель"));
+      System.out.println(map.get("Гавриил"));
     }
 }
