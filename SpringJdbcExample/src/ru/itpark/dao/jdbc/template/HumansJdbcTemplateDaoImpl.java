@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import ru.itpark.dao.HumansDao;
+import ru.itpark.models.Car;
 import ru.itpark.models.Human;
 
 import javax.sql.DataSource;
@@ -13,7 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.*;
 
 public class HumansJdbcTemplateDaoImpl implements HumansDao {
   //language=SQL
@@ -25,21 +26,59 @@ public class HumansJdbcTemplateDaoImpl implements HumansDao {
       "id = ?";
 
   //language=SQL
-  private static final String SQL_SELECT_USERS = "SELECT * FROM owner";
+  private static final String SQL_SELECT_USERS = "SELECT * from owner" +
+      " LEFT JOIN car ON owner.id = car.owner_id;";
 
   private JdbcTemplate template;
 
+  // мап, где ключ - id, значение - человек
+  private Map<Integer, Human> humansMap;
+
   public HumansJdbcTemplateDaoImpl(DataSource dataSource) {
     this.template = new JdbcTemplate(dataSource);
+    this.humansMap = new HashMap<>();
   }
 
   private RowMapper<Human> humanRowMapper = new RowMapper<Human>() {
     @Override
     public Human mapRow(ResultSet resultSet, int i) throws SQLException {
-      return new Human(resultSet.getInt("id"),
+      // отображаю строку в человека
+      Human human = new Human(resultSet.getInt("id"),
           resultSet.getString("name"),
           resultSet.getInt("age"),
           resultSet.getString("citizen"));
+      // сейчас я нахожусь на какой-либо строке
+      // результирующего множества строк
+
+      // тут я в двух ситуациях - либо этот человек
+      // мне встречался, либо нет
+
+      // у меня есть мап ID(ключ)-Человек(значение)
+      //
+      if (humansMap.get(human.getId()) == null) {
+        humansMap.put(human.getId(), human);
+      }
+
+      // в результирующем множестве все колонки
+      // для машины начиются с номера 5
+
+      // если у данного пользователя есть машина
+      if (resultSet.getInt(5) != 0) {
+        // отображем строку в машину
+        Car car = new Car(
+            resultSet.getInt(5),
+            resultSet.getString(6),
+            resultSet.getString(7),
+            resultSet.getString(8),
+            humansMap.get(resultSet.getInt(9)));
+        // вытаскиваем id хозяина данной машины
+        int ownerId = resultSet.getInt(9);
+        // берем хозяина по его id
+        Human owner = humansMap.get(ownerId);
+        // беру список его машин и кидаю туда новую машину
+        owner.getCars().add(car);
+      }
+      return human;
     }
   };
 
@@ -95,6 +134,15 @@ public class HumansJdbcTemplateDaoImpl implements HumansDao {
 
   @Override
   public List<Human> findAll() {
-    return template.query(SQL_SELECT_USERS, humanRowMapper);
+    // мы хотим вытащить всех людей, но люди хранятся не в
+    // результате query, а внутри map, где все люди уникальны
+    template.query(SQL_SELECT_USERS, humanRowMapper);
+
+    // получим все значения из map
+    Collection<Human> humanCollection = humansMap.values();
+    List<Human> result = new ArrayList<>(humanCollection);
+    // теперь нужно сконвертировать Collection в ArrayList и вернуть
+    humansMap.clear();
+    return result;
   }
 }

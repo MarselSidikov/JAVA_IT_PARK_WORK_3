@@ -6,6 +6,8 @@ import ru.itpark.dao.HumansDao;
 import ru.itpark.dao.jdbc.template.HumansJdbcTemplateDaoImpl;
 import ru.itpark.models.Human;
 
+import java.util.List;
+
 public class Main {
 
 
@@ -17,14 +19,11 @@ public class Main {
     dataSource.setUrl("jdbc:postgresql://localhost:5432/sidikov_db");
 
     HumansDao humansDao = new HumansJdbcTemplateDaoImpl(dataSource);
-    Human avraam = new Human("Авраам", 75, "Израиль");
 
-    System.out.println(avraam);
-    humansDao.save(avraam);
-    System.out.println(avraam);
+    humansDao.findAll();
 
-
-
+    List<Human> humans = humansDao.findAll();
+    int i = 0;
   }
 }
 

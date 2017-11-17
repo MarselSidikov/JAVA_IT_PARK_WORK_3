@@ -15,7 +15,11 @@ public class HashMap<K, V> {
   }
 
   public void put(K key, V value) {
-    int hash =  key.hashCode();
+    int hash = key.hashCode();
+    int h = hash >>> 16;
+
+    hash = hash ^ h;
+
     int index = hash & (buckets.length - 1);
 
     if (buckets[index] == null) {
@@ -44,7 +48,11 @@ public class HashMap<K, V> {
   }
 
   public V get(K key) {
-    int hash =  key.hashCode();
+    int hash = key.hashCode();
+    int h = hash >>> 16;
+
+    hash = hash ^ h;
+
     int index = hash & (buckets.length - 1);
 
     Node<K, V> current = buckets[index];

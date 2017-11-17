@@ -1,16 +1,21 @@
 package ru.itpark.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Human {
   private int id;
   private String name;
   private int age;
   private String citizen;
+  private List<Car> cars;
 
   public Human(int id, String name, int age, String citizen) {
     this.id = id;
     this.name = name;
     this.age = age;
     this.citizen = citizen;
+    this.cars = new ArrayList<>();
   }
 
   public Human(String name, int age, String citizen) {
@@ -57,5 +62,9 @@ public class Human {
   public String toString() {
     return this.id + " " + this.age + " "
         + this.name + " " + this.citizen;
+  }
+
+  public List<Car> getCars() {
+    return cars;
   }
 }
