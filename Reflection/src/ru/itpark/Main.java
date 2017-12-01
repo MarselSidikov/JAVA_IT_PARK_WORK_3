@@ -1,5 +1,6 @@
 package ru.itpark;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -12,7 +13,7 @@ public class Main {
       System.out.println(field);
     }
 
-    Human human = new Human();
+    Human human = new Human("Marsel", 23, 185);
     human.age = 23;
     human.name = "Marsel";
 
@@ -22,7 +23,7 @@ public class Main {
 
       Field heightField = humanClass.getDeclaredField("height");
       heightField.setAccessible(true);
-      heightField.set(human, 185);
+      heightField.set(human, 186);
 
       System.out.println(human.name);
       System.out.println(human.getHeight());
@@ -32,6 +33,13 @@ public class Main {
 
       Method anotherGoMethod = humanClass.getMethod("go", Integer.TYPE);
       anotherGoMethod.invoke(human, 33);
+
+      Human anotherHuman = humanClass.newInstance();
+
+      Constructor<Human> humanConstructor = humanClass.getConstructor(String.class, Integer.TYPE, Integer.TYPE);
+
+      Human againAnotherHuman = humanConstructor.newInstance("Закир", 28, 186);
+      System.out.println(againAnotherHuman.name);
     } catch (ReflectiveOperationException e) {
       throw new IllegalArgumentException(e);
     }

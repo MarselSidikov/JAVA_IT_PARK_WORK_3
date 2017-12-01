@@ -5,6 +5,15 @@ public class Human {
   public int age;
   private int height;
 
+  public Human() {
+  }
+
+  public Human(String name, int age, int height) {
+    this.name = name;
+    this.age = age;
+    this.height = height;
+  }
+
   public int getHeight() {
     return height;
   }
