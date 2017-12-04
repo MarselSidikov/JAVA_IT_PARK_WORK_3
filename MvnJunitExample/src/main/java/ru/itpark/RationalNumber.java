@@ -7,12 +7,17 @@ public class RationalNumber {
   private int numerator;
   private int denominator;
 
-  public RationalNumber(int numerator, int denominator) {
+  RationalNumber(int numerator, int denominator) {
     this.numerator = numerator;
 
     if (denominator != 0) {
       this.denominator = denominator;
     } else throw new ArithmeticException("Divide by zero");
+
+  }
+
+  public static RationalNumber create(int numerator, int denominator) {
+    return new RationalNumber(numerator, denominator);
   }
 
   public int getNumerator() {
@@ -21,6 +26,25 @@ public class RationalNumber {
 
   public int getDenominator() {
     return denominator;
+  }
+
+  public void optimize() {
+    int gcd = calcGcd(numerator, denominator);
+
+    this.numerator = this.numerator / gcd;
+    this.denominator = this.denominator / gcd;
+  }
+
+  private int calcGcd(int a, int b) {
+    while (a != 0 && b != 0) {
+      if (a > b) {
+        a = a - b;
+      } else {
+        b = b - a;
+      }
+    }
+
+    return Math.max(a, b);
   }
 
   public String toString() {
