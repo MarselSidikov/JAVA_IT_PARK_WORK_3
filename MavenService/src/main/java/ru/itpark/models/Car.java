@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @Builder
 @EqualsAndHashCode(exclude = "owner")
-@ToString(exclude = "owner")
+@ToString
 public class Car {
   private int id;
   private String number;
