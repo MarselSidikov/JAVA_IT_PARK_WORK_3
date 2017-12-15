@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import ru.itpark.models.Human;
 
 import static org.junit.Assert.*;
@@ -17,11 +20,13 @@ public class HumansJdbcTemplateDaoImplTest {
   // метод, который вызывается перед каждым тест-методом
   @Before
   public void setUp() throws Exception {
-    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    dataSource.setUsername("postgres");
-    dataSource.setPassword("Zaq12wsx");
-    dataSource.setUrl("jdbc:postgresql://localhost:5432/sidikov_db");
-    testedHumansDao = new HumansJdbcTemplateDaoImpl(dataSource);
+    EmbeddedDatabase database = new EmbeddedDatabaseBuilder()
+        .setType(EmbeddedDatabaseType.HSQL)
+        .addScript("schema_owner.sql")
+        .addScript("data_owner.sql")
+        .build();
+
+    testedHumansDao = new HumansJdbcTemplateDaoImpl(database);
   }
 
   @Test

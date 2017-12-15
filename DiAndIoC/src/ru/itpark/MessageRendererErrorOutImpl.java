@@ -1,9 +1,9 @@
 package ru.itpark;
 
-public class MessageErrorOutImpl implements MessageRenderer {
+public class MessageRendererErrorOutImpl implements MessageRenderer {
   private Message message;
 
-  public MessageErrorOutImpl(Message message) {
+  public MessageRendererErrorOutImpl(Message message) {
     this.message = message;
   }
 

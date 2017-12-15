@@ -5,10 +5,34 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.itpark</groupId>
-    <artifactId>maven-service</artifactId>
+    <artifactId>spring-example</artifactId>
     <version>0.1</version>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- JDBC-драйвер для PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -21,14 +45,6 @@
             <artifactId>spring-jdbc</artifactId>
             <version>4.3.13.RELEASE</version>
         </dependency>
-        <!-- Библиотека для автогенерации Setter, Getter и т.д. -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.18</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Библиотека для модульнго тестирования -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -43,22 +59,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <!--Указываем конфигурацию сборки приложения-->
-    <build>
-        <!-- Список плагинов сборки-->
-        <plugins>
-            <!--Плагин сборки Maven, который позволяет настроить
-            режим компиляции -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
