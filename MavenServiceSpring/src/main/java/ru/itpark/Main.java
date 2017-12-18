@@ -12,8 +12,7 @@ public class Main {
     ClassPathXmlApplicationContext context =
         new ClassPathXmlApplicationContext("context.xml");
 
-    DataSource dataSource = context.getBean("dataSource", DataSource.class);
-    HumansDao humansDao = new HumansJdbcTemplateDaoImpl(dataSource);
+    HumansDao humansDao = context.getBean("humansDao", HumansDao.class);
 
     Human h1 = humansDao.find(2);
     System.out.println(h1);
