@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.itpark.models.User" schema="public" table="owner">
+        <!--как называется поле в Java-->
+        <id name="id" type="java.lang.Long">
+            <!--как называется колонка в БД (SQL)-->
+            <column name="id" sql-type="integer"/>
+            <!--Логика генерации id - в БД -->
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" unique="false"/>
+        <property name="citizen"/>
+        <property name="age"/>
+    </class>
+</hibernate-mapping>
