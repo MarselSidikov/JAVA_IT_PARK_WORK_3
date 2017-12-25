@@ -26,6 +26,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.2.12.Final</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.2.12.Final</version>
+        </dependency>
     </dependencies>
 
     <!--Указываем конфигурацию сборки приложения-->
