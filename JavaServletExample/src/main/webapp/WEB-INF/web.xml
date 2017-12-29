@@ -23,4 +23,8 @@
         <servlet-name>usersJspServlet</servlet-name>
         <url-pattern>/users_as_jsp</url-pattern>
     </servlet-mapping>
+
+    <listener>
+        <listener-class>ru.itpark.ContextListener</listener-class>
+    </listener>
 </web-app>

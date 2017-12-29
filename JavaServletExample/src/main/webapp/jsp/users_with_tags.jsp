@@ -21,5 +21,10 @@
         </tr>
     </c:forEach>
 </table>
+<form action="/users_as_jsp" method="post">
+    <input type="text" name="name" placeholder="Имя">
+    <input type="text" name="age" placeholder="Возраст">
+    <input type="submit">
+</form>
 </body>
 </html>
