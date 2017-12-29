@@ -9,8 +9,18 @@
         <servlet-class>ru.itpark.servlets.UsersServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>usersJspServlet</servlet-name>
+        <servlet-class>ru.itpark.servlets.UsersJspServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>
         <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>usersJspServlet</servlet-name>
+        <url-pattern>/users_as_jsp</url-pattern>
     </servlet-mapping>
 </web-app>
