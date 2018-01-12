@@ -1,4 +1,4 @@
-package ru.itpark.bean.annotation;
+package ru.itpark.autowired_3;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

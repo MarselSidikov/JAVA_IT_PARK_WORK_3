@@ -1,4 +1,4 @@
-package ru.itpark.xml;
+package ru.itpark.bean.annotation_2;
 
 public class GrandmotherWaiterImpl implements Waiter {
     public void giveMenu() {

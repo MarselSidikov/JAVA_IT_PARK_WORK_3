@@ -1,4 +1,4 @@
-package ru.itpark.bean.annotation;
+package ru.itpark.autowired_3;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,13 +8,16 @@ public class JavaSpringContext {
 
     @Bean
     public Restaurant restaurant() {
-        Restaurant restaurant = new Restaurant();
-        restaurant.setWaiter(waiter());
-        return restaurant;
+        return new Restaurant();
     }
 
     @Bean
-    public Waiter waiter() {
+    public Waiter friendlyWaiter() {
         return new FriendlyWaiterImpl();
+    }
+
+    @Bean
+    public Waiter grandmotherWaiter() {
+        return new GrandmotherWaiterImpl();
     }
 }

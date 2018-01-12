@@ -1,4 +1,4 @@
-package ru.itpark.xml;
+package ru.itpark.autowired_ft_xml_4;
 
 public interface Waiter {
     void giveMenu();

@@ -1,4 +1,4 @@
-package ru.itpark.bean.annotation;
+package ru.itpark.xml_1;
 
 public interface Waiter {
     void giveMenu();

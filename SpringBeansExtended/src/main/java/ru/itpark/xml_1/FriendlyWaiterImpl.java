@@ -1,4 +1,4 @@
-package ru.itpark.xml;
+package ru.itpark.xml_1;
 
 public class FriendlyWaiterImpl implements Waiter {
     public void giveMenu() {
