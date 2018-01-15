@@ -4,7 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:db.properties"/>
+    <context:property-placeholder location="classpath:ru.itpark/db.propertiesproperties"/>
 
     <context:annotation-config/>
     <context:component-scan base-package="ru.itpark.repository"/>
@@ -22,4 +22,6 @@
         <property name="password" value="${datasource.password}"/>
         <property name="driverClassName" value="${datasource.driver}"/>
     </bean>
+
+    <bean id="springContext" class="ru.itpark.config.ApplicationContext"/>
 </beans>

@@ -13,18 +13,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Component(value = "usersRepository")
-public class UsersRepositoryJdbcImpl implements UsersRepository {
+public class UsersRepositoryImpl implements UsersRepository {
 
     //language=SQL
     private static final String SQL_SELECT_ALL_USERS =
             "SELECT * FROM owner";
 
-    private JdbcTemplate template;
-
     @Autowired
-    public UsersRepositoryJdbcImpl(@Qualifier("hikariDataSource") DataSource dataSource) {
-        template = new JdbcTemplate(dataSource);
-    }
+    private JdbcTemplate template;
 
     public List<User> findAll() {
         return template.query(SQL_SELECT_ALL_USERS, (row, rowNumber) -> User.builder()
