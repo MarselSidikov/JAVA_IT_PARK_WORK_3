@@ -25,7 +25,23 @@ public class UsersRepositoryImpl implements UsersRepository {
     @Autowired
     private JdbcTemplate template;
 
-    @PersistenceContext
+    // entityManager - альтернатива
+    // sessionFactory
+    // EntityManager - стандартизирован джавой JPA
+    // Вопрос - откуда мы его берем? Мы берем его из
+    // ORM-фреймворка, но с важной оговоркой -
+    // не чистый Hibernate, а приправленный Spring-ом
+
+    // Чтобы создать EntityManager нужны три вещи
+    // 1) Менеджер транзакций (замена entityManager.getTransaction().begin()
+    // и entityManager.getTransaction().commit()
+    // 2) Фабрика EntityManager-ов
+    // 3) Адаптер, который сможет настроить ваш EntityManager
+    // на конкретную реализацию ORM-фреймворка (например hibernate)
+    // @PersistenceContext вместо @Autowired, почему?
+    // Потому что созданием EntityManagero-в занимается
+    // Spring через LocalContainerEntityManagerFactoryBean
+    @PersistenceContext // не аннотация Spring-а!!!!
     private EntityManager entityManager;
 
     public List<User> findAll() {

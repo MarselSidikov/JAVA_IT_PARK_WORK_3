@@ -9,19 +9,28 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <!--
+        Конфигурационный файл Spring-приложения
+        Содержит описания бинов и прочие необходимые данные
+        для создания полноценного контейнера (ClassPathXmlApplicationContext context)
+    -->
+
+    <!--
+        Указываем путь к файлу конфигурации и доп. свойств
+    -->
     <context:property-placeholder location="classpath:ru.itpark/db.properties"/>
 
+    <!--
+        Чтобы работали аннотации
+        @Component, @Bean, @Autowired и т.д.
+    -->
     <context:annotation-config/>
     <context:component-scan base-package="ru.itpark.repository"/>
-    <tx:annotation-driven/>
 
-    <bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
-        <property name="username" value="${datasource.username}"/>
-        <property name="jdbcUrl" value="${datasource.url}"/>
-        <property name="password" value="${datasource.password}"/>
-        <property name="driverClassName" value="${datasource.driver}"/>
-    </bean>
 
+    <!--
+        Описание бина dataSource
+    -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="username" value="${datasource.username}"/>
         <property name="url" value="${datasource.url}"/>
@@ -29,20 +38,36 @@
         <property name="driverClassName" value="${datasource.driver}"/>
     </bean>
 
+    <!--
+        Чтобы работало @Transactional
+    -->
+    <tx:annotation-driven/>
+
+    <!--
+        Бин, для менеджера транзакций
+    -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
+    <!--
+        Бин, который описывает фабрику EntityManager-ов
+        Принимает на вход источник данных, пакеты с моделями
+        Адаптер для работы с ORM-фреймворком
+    -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="ru.itpark.models"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
     </bean>
-
+    <!--
+        Отвечает за то, с каким фреймворком мы будем работать
+    -->
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="true"/>
         <property name="generateDdl" value="true"/>
     </bean>
 
+    <!--Бин, представляющий собой экземпляр Java-конфигурации Spring-контекста -->
     <bean id="springContext" class="ru.itpark.config.ApplicationContext"/>
 </beans>
