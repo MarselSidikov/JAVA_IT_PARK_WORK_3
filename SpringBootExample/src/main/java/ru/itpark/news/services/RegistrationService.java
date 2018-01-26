@@ -8,7 +8,9 @@ public interface RegistrationService {
    * Шифрует пароль
    * Сохраняет данные в БД
    * @param form
-   * @return id-сгенерированного пользователя
+   * @return email пользователя
    */
-  Long registration(RegistrationForm form);
+  String registration(RegistrationForm form);
+
+  boolean confirm(String confirmString);
 }

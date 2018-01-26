@@ -6,6 +6,8 @@
     <title>News- Регистрация</title>
 </head>
 <body>
-    <h1>Поздравляем, ваш Id - ${model.id}</h1>
+<#include 'common/header.ftl'/>
+    <h1>Поздравляем, письмо для подтверждения регистрации отправлено на
+        - ${model.email}</h1>
 </body>
 </html>

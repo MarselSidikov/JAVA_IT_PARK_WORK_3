@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<#include 'common/header.ftl'/>
 <form class="form-style-4" title="Регистрация"
       name="registrationForm"
       method="post"

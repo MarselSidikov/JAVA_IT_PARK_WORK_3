@@ -6,6 +6,7 @@
     <title>News- Регистрация</title>
 </head>
 <body>
+<#include 'common/header.ftl'/>
 <table>
     <tr>
         <th>ID</th>

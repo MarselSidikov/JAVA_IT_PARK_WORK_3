@@ -7,6 +7,7 @@
     <title>Просмотр пользователя</title>
 </head>
 <body>
+<#include 'common/header.ftl'/>
 <script>
     <#--Функция принимает на вход два параметра - имя и фамилию -->
     function sendNewNameOrSurName(name, surname) {
