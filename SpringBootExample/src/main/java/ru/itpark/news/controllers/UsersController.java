@@ -17,6 +17,11 @@ public class UsersController {
   @Autowired
   private UsersService service;
 
+  @GetMapping(value = "/profile")
+  public String getProfilePage() {
+    return "profile";
+  }
+
   @GetMapping(value = "/users")
   public String getUsers(@ModelAttribute("model")ModelMap model,
                          @RequestParam("order_by") String orderBy) {

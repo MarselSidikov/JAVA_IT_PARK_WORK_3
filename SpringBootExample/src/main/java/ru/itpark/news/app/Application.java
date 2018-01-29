@@ -22,7 +22,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 // Spring JPA сам сгенерирует для них реализацию
 @EnableJpaRepositories(basePackages = "ru.itpark.news.repositories")
 // выключили безопасность чтобы было норм
-@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
+//@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 public class Application {
   // просто запускаем наше приложение
   public static void main(String[] args) {
