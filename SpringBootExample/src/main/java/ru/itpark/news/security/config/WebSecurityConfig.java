@@ -18,16 +18,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
-        .authorizeRequests()
-          .antMatchers("/registration/**").permitAll()
+        .authorizeRequests() // блок, отвечающий за урлы и их доступы
+          .antMatchers("/registration/**").permitAll() // разрешили всем
           .antMatchers("/confirm/**").permitAll()
           .antMatchers("/css/**").permitAll()
           .antMatchers("/js/**").permitAll()
-          .antMatchers("/profile/**").hasAnyAuthority("USER", "ADMIN")
-          .antMatchers("/users/**").hasAnyAuthority("ADMIN")
-          .anyRequest().authenticated()
+          .antMatchers("/profile/**").hasAnyAuthority("USER", "ADMIN") // разрешили админу и пользователям
+          .antMatchers("/users/**").hasAnyAuthority("ADMIN") // только админу
+          .anyRequest().authenticated() // все остальные запросы требуют предварительной авторизации
             .and()
-        .formLogin()
+        .formLogin() // блок с формой входа
           .loginPage("/login")
           .usernameParameter("email")
           .passwordParameter("password")
