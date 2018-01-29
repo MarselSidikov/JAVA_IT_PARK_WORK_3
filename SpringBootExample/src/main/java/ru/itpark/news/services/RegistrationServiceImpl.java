@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itpark.news.forms.RegistrationForm;
+import ru.itpark.news.models.Role;
 import ru.itpark.news.models.State;
 import ru.itpark.news.models.User;
 import ru.itpark.news.repositories.UsersRepository;
@@ -41,6 +42,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         .expiredDate(LocalDateTime.now().plusHours(3))
         .email(form.getEmail())
         .surname(form.getSurname())
+        .role(Role.USER)
         .hashPassword(hashPassword)
         .registrationTime(registrationTime)
         .build();

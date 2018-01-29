@@ -32,4 +32,7 @@ public class User {
 
   @Enumerated(value = EnumType.STRING)
   private State state;
+
+  @Enumerated(value = EnumType.STRING)
+  private Role role;
 }
