@@ -4,7 +4,6 @@
 <html>
 <head>
     <title>News- Вход</title>
-    <script type="text/javascript" src="/js/form_script.js"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -19,6 +18,8 @@
     <input type="text" name="email" placeholder="Почта"/>
     <br>
     <input type="password" name="password" placeholder="Пароль"/>
+    <input type="checkbox" name="remember-me">Запомнить
+    <br>
     <input type="submit">
 </form>
 </body>
