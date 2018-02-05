@@ -55,4 +55,9 @@ public class UsersController {
     return ResponseEntity.accepted().build();
   }
 
+  @GetMapping("/all/users/{user-id}")
+  @ResponseBody
+  public ResponseEntity<User> getUser(@PathVariable("user-id") Long userId) {
+    return ResponseEntity.ok(service.getUser(userId));
+  }
 }
