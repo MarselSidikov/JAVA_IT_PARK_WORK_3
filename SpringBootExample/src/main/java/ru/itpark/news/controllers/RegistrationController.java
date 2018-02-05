@@ -44,6 +44,6 @@ public class RegistrationController {
     } else {
       model.addAttribute("error", false);
     }
-    return "login";
+    return "user/login";
   }
 }

@@ -1,5 +1,5 @@
 <#ftl encoding='UTF-8'>
-<#import 'spring.ftl' as spring>
+<#import '../spring.ftl' as spring>
 <@spring.bind "model"/>
 <html>
 <head>

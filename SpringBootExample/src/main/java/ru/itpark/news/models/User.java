@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "news_user")
@@ -35,4 +36,7 @@ public class User {
 
   @Enumerated(value = EnumType.STRING)
   private Role role;
+
+  @ManyToMany(mappedBy = "authors")
+  private List<Paper> papers;
 }
